@@ -20,7 +20,15 @@ a {
 }
 
 main {
-  padding: 2rem;
+  padding: 1rem;
   max-width: 750px;
   margin: 0 auto;
+}
+
+header {
+  background-color: hsl(0, 0%, 21%);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
 }

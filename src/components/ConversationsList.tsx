@@ -1,24 +1,22 @@
 import React from "react";
-import { fromUnixTime, format } from "date-fns";
+import Link from "next/link";
 import styles from "../styles/ConversationList.module.css";
 import { Conversation } from "../types/conversation";
-
-const formatTimestamp = (timeStamp: number): string =>
-  format(fromUnixTime(timeStamp), "MMMM dd");
+import { formatTimestamp } from "./helpers";
 
 type ConversationsListProps = {
   conversations: Conversation[];
 };
 
-const ConversationsList = ({ conversations }: ConversationsListProps) => {
-  return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <ul>
-          {conversations.map((conversation) => {
-            const { id, senderNickname, lastMessageTimestamp } = conversation;
-            return (
-              <li key={id}>
+const ConversationsList = ({ conversations }: ConversationsListProps) => (
+  <main>
+    <ul>
+      {conversations.map((conversation) => {
+        const { id, senderNickname, lastMessageTimestamp } = conversation;
+        return (
+          <li key={id}>
+            <Link href={`/conversation/${id}`} passHref>
+              <a>
                 <article className={styles.message}>
                   <figure className={styles.avatar}>
                     <span>{senderNickname.charAt(0)}</span>
@@ -30,13 +28,13 @@ const ConversationsList = ({ conversations }: ConversationsListProps) => {
                     </p>
                   </div>
                 </article>
-              </li>
-            );
-          })}
-        </ul>
-      </main>
-    </div>
-  );
-};
+              </a>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  </main>
+);
 
 export default ConversationsList;

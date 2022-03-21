@@ -1,0 +1,20 @@
+.message__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.message {
+  margin-bottom: 1rem;
+}
+
+.textarea {
+  flex-grow: 1;
+  min-width: inherit;
+  min-height: 2em;
+  margin-right: 1rem;
+}

@@ -69,3 +69,19 @@ If you are out of ideas, here are some thoughts :
 - Our goal is to support everybody in the country, including people with disabilities. As a good citizen and a good developer, can you make sure the app is accessible for everyone ?
 
 - We all love to relax after a hard day’s work. It would be a shame if we didn’t feel confident enough about the upcoming automatic deployment. Are you sure everything has been tested thoroughly ?
+
+## What I have done
+
+- Css: I used Bulma to make UI prettier. I chose it for its lightness.
+- For the api calls, I used react-query. React-query is very performant: it handles caching and allows to easily handle api state (load, error...). It also allows to access and change the data without using a global state. It's simpler and it's a good practice to avoid multiple sources of truth.
+- What I could make to add security:
+  1. Encrypt messages before sending them to the api.
+  2. Made a verification to avoid spamming: do not allow sending too much messages for a short time
+  3. Use `getServerSideProps` nextJS function to get data. It runs api request on the server side, before rendering the page on the browser. It's more secure and performant than requesting the api on client side. Unfortunately it's not compatible with react-query.
+- I made some basic unitary tests with RTL and Jest for the conversationsList component, I would make deeper tests if I had more time
+- I spent ~7 hours of work on this exercice
+
+## Remarks
+
+- The doc https://leboncoin.tech/frontend-technical-test/ does not seem up-to-date, I noticed post message route body is not exhaustive on the doc
+- The delete message api route doesn't seem implemented
